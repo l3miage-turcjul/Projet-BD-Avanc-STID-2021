@@ -1,0 +1,106 @@
+.fond {
+  background-color:GhostWhite;
+}
+
+h1 {
+	font-family: verdana;
+	text-align: left;
+  
+}
+
+h2	{
+	font-family:Verdana;
+    color:Black;
+    text-align:left;
+	text-decoration: underline;
+}
+
+.corps{
+	font-family:Lucida Sans Unicode;
+	
+	
+}
+.bar{
+  color:Black;
+}
+.button:link{
+	background-color: MediumSlateBlue;
+	color: white;
+	text-align: center;
+	border-radius: 1%;
+	padding: 15px;
+	
+}
+
+.button:visited{
+	background-color:DarkOrchid;
+	color: white;
+	
+}
+
+.button:hover {
+  background-color:LightSkyBlue;
+}
+
+.button:active{
+	background-color:SlateBlue;
+	
+}
+
+.art{
+	background-color: LightSteelBlue;
+	padding: 2.5%;
+	margin:1%;
+	border-radius: 2%;
+	
+}
+
+.men{
+	background-color:LightSkyBlue;
+	padding: 2.5%;
+	margin:1%;
+	border-radius: 2%;
+	
+}
+
+.corps{
+	text-align: justify;
+	font-family : verdana;
+	
+}
+
+.cot{
+	background-color: LightSteelBlue;
+	border-radius: 0.9%;
+	margin:1%;
+	margin-left: 2.5%;
+	padding: 1.5%;
+}
+
+.pied{
+	border-style: double;
+	margin-top: 1%;
+
+}
+
+
+.basp{
+	font-size: 80%;
+	text-align: left;
+	font-family:Times New Roman;
+}
+
+.bast{
+	font-size: 100%;
+	font-family:Times New Roman;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+table.centre{ margin:auto;}
+table.centre td{text-align:center;}
+table#fond tr{
+background:#ededed;
+}

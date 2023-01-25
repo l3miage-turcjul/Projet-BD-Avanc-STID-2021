@@ -1,0 +1,175 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="Language" content="fr" />         
+	<meta name="Description" content="Description de votre page" />
+	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="bootstrap-4.4.1-dist/css/bootstrap.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="bootstrap-4.4.1-dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"> </script>
+	<script type="text/javascript">
+	google.charts.load("current", {packages: ["corechart","geochart","table"]});
+	google.charts.setOnLoadCallback(drawChart);
+	 function drawChart() {
+		var data = google.visualization.arrayToDataTable(
+			$.ajax({
+				url: "vuecate.php",
+
+				async: false
+			}).responseJSON
+		);
+		var options = { colors: ['red']};
+		
+		var chart = new
+	google.visualization.BarChart(document.getElementById('barchart'));
+	 chart.draw(data, options);
+		
+		var data2 = google.visualization.arrayToDataTable(
+			$.ajax({
+				url: "NbJourTendanceArtist.php",
+
+				async: false
+			}).responseJSON
+		);
+		var options2 = {
+          
+          hAxis: { logScale: true, title: 'Nombre de vues' },
+          vAxis: { logScale: true, title: 'Nombre de likes' },
+		  colors: ['red']
+        };
+		
+		var chart2 = new
+	google.visualization.BubbleChart(document.getElementById('barchartt'));
+	 chart2.draw(data2, options2);
+
+		var data3 = google.visualization.arrayToDataTable(
+			$.ajax({
+				url: "Noncomnot.php",
+
+				async: false
+			}).responseJSON
+		);
+		var options3 = {};
+		
+		var table = new google.visualization.Table(document.getElementById('table'));
+		table.draw(data3, options3);	
+
+
+		var data4 = google.visualization.arrayToDataTable(
+			$.ajax({
+				url: "notcom.php",
+
+				async: false
+			}).responseJSON
+		);
+		var options4 = {};
+		
+		var table2 = new google.visualization.Table(document.getElementById('table2'));
+		table2.draw(data4, options4);
+		
+		var data5 = google.visualization.arrayToDataTable(
+			$.ajax({
+				url: "notnot.php",
+
+				async: false
+			}).responseJSON
+		);
+		var options5 = {};
+		
+		var table3 = new google.visualization.Table(document.getElementById('table3'));
+		table3.draw(data5, options5);
+		}
+ </script>
+</head>
+<body class="fond"> 		
+		<nav class="navbar-expand-md navbar-dark bg-dark">
+			<!--<a class="navbar-brand">Menu</a>-->
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="accueil.html">Accueil</a>
+				</li>
+				<li class="nav-item dropdown active">
+					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Notre Projet</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="Contexte.html">Contexte</a>
+						<a class="dropdown-item" href="graph.html">Analyses</a>
+						<a class="dropdown-item" href="affichervid.php">Interface D'exploration de la base de données</a>
+						<a class="dropdown-item" href="Star.html">Modèle en étoile</a>
+					</div>
+				</li>
+			</ul>
+			</nav>
+		</div>
+ <div class="container-fluid">
+		<div class="row">
+			<div class="col-md-9 art">
+				<article>
+				<center>
+				<h2>Les analyses des tendances Youtube</h2><br>
+				<p class="corps">
+				On cherche si des critères aident à apparaître dans les tendances Youtube pendant un moment.
+				Dans notre basse de données nous avons 892 vidéos en tendance dans la période du 03/08/2020 21:51 au 28/08/2020 07:00
+				Pour commencer ces analyses nous sommes demandés qu'elles étaient les vidéos avec le plus de vues, est ce qu'elles appartiennet à des catégories avec un nombre de vues important. Sont-elles regroupées dans une catégorie ? Puis après on va se concentrer sur les vidéos en tendance pour au moins 1 semaine depuis leur publication on va observer les vues les likes et leur catégorie dans le but de comparer avec le graphique précédent pour la catégorie et interpréter la quantité de likes. <br><br>
+				<br><br>
+				</p>
+				<h2>Les vues selon les catégories </h2>
+				<div id="barchart" style="width: 900px; height: 500px;"></div>
+				<p>
+				 Ce graphique nous présentent le nombres de vues en fonctions des catégories On constates que que la catégorie musique est dominante de plus on constate que les catégories dominantes sont celle liées au divertissement ( jeux vidéos / sports / musiques )
+				</p>
+				<h2>Les tendances Youtube selon les vues et les likes.</h2>
+				<div id="barchartt" style="width: 900px; height: 500px;"></div>
+				<p class="corps">
+				Ce graphique nous montre les vidéos les qui restent le plus  de jours d'affilée en tendance en fonctions de 3 paramètres Le nombres de vues , le nombres de likes et la catégories. On constate dans ce graphique une relation proportionnelle entre le nombres de likes et le nombres de vue. De plus ce graphique mets en exergue que ce sont les vidéos avec le nombres de likes le plus élevée  et qui appartiennent à la catégorie musique qui sont les plus disposée à rester en tendance plus longtemps.
+				</p>
+				<h2>Les tendances Youtube selon l'activation des commentaires et des notes</h2>
+				<div id="table" style="width: 900px; height: 75px;"></div>
+				<p class="corps">
+				On observe dans les tendances une seule vidéo qui a été en tendance avec les commentaires et les notes désactivés. On peut supposer que lorsque ces paramètres sont activités il y a moins de chances de d'apparaître dans les tendances. Après on peut se demander si l'activation séparé des deux paramètres change le nombre de vidéos en tendance.
+				</p>
+				<div id="table2" style="width: 900px; height: 200px;"></div>
+				<p class="corps">
+				Par la suite en désactivant uniquement les commentaires on obtient 4 vidéos en tendance avec ce paramètre. Cependant ce n'est pas assez significatif 4 vidéos sur 892 (0,45%). Donc ce paramètre n'est pas efficace pour apparaître dans les tendances 
+				</p>
+				<div id="table3" style="width: 900px; height: 400px;"></div>
+				<p class="corps">
+				Pour terminer en désactivant uniquement les notes  on obtient 15 vidéos en tendance. Mais 15 vidéos représentent 1,68% sur 892 vidéos.
+				Mais ce n'est toujours pas assez significatif pour pouvoir considérer ce paramètre comme utile pour être dans les tendances Youtube.
+				</p>
+				<BR>
+				<p>
+				Pour conclure on peut retenir que pour appartenir aux tendances sur Youtube, la vidéo doit avoit beaucoup de vues souvent dans les millions, mais aussi un nombre de likes élevé et appartenir à la catégorie musique. Cependant il ne faut pas désactiver les commentaires et les notes sinon cela réduit de beaucoup les chances dêtre dans les tendances Youtube. 
+				</p>
+				</center>
+				</article>
+			</div>
+			<div class="col-xl-2 cot">
+				<section>
+				<h2>Liens utiles :</h2><br>
+				<p><a href="https://www.youtube.com/" class="button">Le Site de youtube</a><br><br><br>
+				<a href="https://www.kaggle.com/rsrishav/youtube-trending-video-dataset?select=FR_youtube_trending_data.csv" class="button">Sources des données </a></p>
+				</section>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8 offset-md-2 pied">
+				<img class="img-fluid  float-left" src="images/logo_stid_vignette.jpg" alt="Logo de STID" id="logo">
+				<h3 class="bast">Nous joindre: </h3><p class="basp">Adresse Physique: Bât Michel Dubois (ex-BSHM) – Aile C 1251, Avenue Centrale Domaine Universitaire 38400 Saint Martin d’Hères <br>
+				Adresse Postale: IUT2 – Département STID Bat. Michel Dubois (ex-BSHM) CS 40700 38058 GRENOBLE Cedex <br>
+				Téléphone : 04 76 82 56 41 <br>
+				Site: <a href="https://www.stid-grenoble.fr/formations/">https://www.stid-grenoble.fr/formations/</a></p>
+			</div>
+		</div>
+	</div>
+ 
+</body>
+</html>
